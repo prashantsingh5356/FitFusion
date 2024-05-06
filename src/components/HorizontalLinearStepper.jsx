@@ -3,26 +3,19 @@ import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useContext } from "react";
 
-const steps = ["Step 1", "Step 2", "Step 3", "Step 4"];
+import OnboardingContext from "../context/OnboardingContext";
+
+const steps = ["Sign up", "Company Details", "Select Plan", "Final Setup"];
 
 const HorizontalLinearStepper = () => {
-  const [activeStep, setActiveStep] = useState(0);
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  const onboardingCtx = useContext(OnboardingContext);
 
   return (
     <>
-      <Box sx={{ width: "100%" }}>
-        <Stepper activeStep={activeStep}>
+      <Box px={2} sx={{ width: "100%" }}>
+        <Stepper activeStep={onboardingCtx.stepperValue}>
           {steps.map((label, index) => {
             const stepProps = {};
             const labelProps = {};
@@ -34,17 +27,6 @@ const HorizontalLinearStepper = () => {
             );
           })}
         </Stepper>
-        {/* <Button
-          color="inherit"
-          disabled={activeStep === 0}
-          onClick={handleBack}
-          sx={{ mr: 1 }}
-        >
-          Back
-        </Button>
-        <Button onClick={handleNext}>
-          {activeStep === steps.length - 1 ? "Finish" : "Next"}
-        </Button> */}
       </Box>
     </>
   );

@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 
 // React lib imports
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import OnboardingProvider from "./context/OnboardingProvider";
 
 function App() {
   const router = createBrowserRouter([
@@ -24,7 +25,9 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <OnboardingProvider>
+        <RouterProvider router={router} />
+      </OnboardingProvider>
     </>
   );
 }

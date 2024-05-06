@@ -8,7 +8,7 @@ import OnboardingRightPanel from "../components/OnboardingRightPanel";
 const Onbaording = () => {
   return (
     <>
-      <Box width={"98vw"} padding={"1%"} height="98vh" bgcolor={"red"}>
+      <Box width={"99%"} pl={"1%"} height="100vh" bgcolor={"#2856be"}>
         <Stack direction={"row"}>
           <OnboardingLeftPanel />
           <OnboardingRightPanel />
