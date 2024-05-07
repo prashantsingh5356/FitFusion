@@ -14,6 +14,8 @@ const SignupUser = () => {
     onboardingCtx.incrementStepperVal();
   };
 
+  // console.log(onboardingCtx.companyEmail);
+
   return (
     <>
       <Box width={"100%"} height={"85vh"}>
@@ -37,6 +39,13 @@ const SignupUser = () => {
                 justifyContent={"space-around"}
               >
                 <TextField
+                  onChange={(event) => {
+                    onboardingCtx.updateSignupData({
+                      type: "companyEmail",
+                      data: event.target.value,
+                    });
+                  }}
+                  value={onboardingCtx.companyEmail}
                   size="small"
                   margin="normal"
                   required
@@ -48,6 +57,13 @@ const SignupUser = () => {
                   autoFocus
                 />
                 <TextField
+                  onChange={(event) => {
+                    onboardingCtx.updateSignupData({
+                      type: "companyPassword",
+                      data: event.target.value,
+                    });
+                  }}
+                  value={onboardingCtx.companyPassword}
                   size="small"
                   margin="normal"
                   required
@@ -59,6 +75,13 @@ const SignupUser = () => {
                   autoComplete="current-password"
                 />
                 <TextField
+                  onChange={(event) => {
+                    onboardingCtx.updateSignupData({
+                      type: "confirmCompanyPassword",
+                      data: event.target.value,
+                    });
+                  }}
+                  value={onboardingCtx.confirmCompanyPassword}
                   size="small"
                   margin="normal"
                   required
@@ -80,6 +103,7 @@ const SignupUser = () => {
                     <Button
                       variant="contained"
                       onClick={signupUserNextStepHandler}
+                      disabled={!onboardingCtx.checkValidInputForSignupStep()}
                     >
                       Next
                     </Button>

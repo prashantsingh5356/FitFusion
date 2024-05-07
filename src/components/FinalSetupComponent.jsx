@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   Box,
@@ -12,10 +13,10 @@ import {
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import OnboardingContext from "../context/OnboardingContext";
-import GymAddressComponent from "./GymAddressComponent";
 import EmployeeEmail from "./EmployeeEmail";
 
 const FinalSetupComponent = () => {
+  const navigate = useNavigate();
   const onboardingCtx = useContext(OnboardingContext);
 
   const stepperPrevHandler = () => {
@@ -24,6 +25,8 @@ const FinalSetupComponent = () => {
   const signupUserNextStepHandler = () => {
     prompt("Redirect user to Dashboard");
     // onboardingCtx.incrementStepperVal();
+    onboardingCtx.resetStepperVal();
+    navigate("/");
   };
   return (
     <>
@@ -63,21 +66,13 @@ const FinalSetupComponent = () => {
                   height={"20vh"}
                   border={"1px solid"}
                   borderRadius={2}
-                  display={"flex"}
-                  flexWrap={"wrap"}
                   overflow={"scroll"}
                 >
-                  <EmployeeEmail />
-                  <EmployeeEmail />
-                  <EmployeeEmail />
-                  <EmployeeEmail />
-                  <EmployeeEmail />
-                  <EmployeeEmail />
-                  <EmployeeEmail />
-                  <EmployeeEmail />
-                  <EmployeeEmail />
-                  <EmployeeEmail />
-                  <EmployeeEmail />
+                  <Box display={"flex"} flexWrap={"wrap"}>
+                    <EmployeeEmail />
+                    <EmployeeEmail />
+                    <EmployeeEmail />
+                  </Box>
                 </Box>
                 <Grid container alignItems={"center"} gap={3}>
                   <Grid item xs>

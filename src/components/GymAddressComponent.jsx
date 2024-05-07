@@ -1,7 +1,23 @@
 import { TextareaAutosize as BaseTextareaAutosize } from "@mui/base/TextareaAutosize";
 import { styled } from "@mui/system";
 
+import OnboardingContext from "../context/OnboardingContext";
+import { useContext, useState, useRef } from "react";
+
 const GymAddressComponent = () => {
+  const onboardingCtx = useContext(OnboardingContext);
+  const [companyAddressData, setCompanyAddressData] = useState("");
+  const companyAddressRef = useRef("");
+
+  const updateCompanyAddressData = (event) => {
+    companyAddressRef.value = event.target.value;
+    // setCompanyAddressData(event.target.value);
+    // onboardingCtx.updateCompanyData({
+    //   type: "companyAddress",
+    //   data: companyAddressRef.value,
+    // });
+  };
+
   const blue = {
     100: "#DAECFF",
     200: "#b6daff",
@@ -60,6 +76,8 @@ const GymAddressComponent = () => {
 
   return (
     <Textarea
+      ref={companyAddressRef}
+      onChange={updateCompanyAddressData}
       aria-label="gym address"
       minRows={5}
       placeholder="Enter your company address"

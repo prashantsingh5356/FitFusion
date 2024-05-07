@@ -34,6 +34,13 @@ const GymDetails = () => {
           <Box width={"80%"} mt={2}>
             <Box display={"flex"} flexDirection={"row"} gap={1}>
               <TextField
+                onChange={(event) =>
+                  onboardingCtx.updateCompanyData({
+                    type: "adminFirstName",
+                    data: event.target.value,
+                  })
+                }
+                value={onboardingCtx.adminFirstName}
                 size="small"
                 margin="normal"
                 required
@@ -42,8 +49,16 @@ const GymDetails = () => {
                 label="First name"
                 name="text"
                 autoComplete="text"
+                autoFocus
               />
               <TextField
+                onChange={(event) =>
+                  onboardingCtx.updateCompanyData({
+                    type: "adminLastName",
+                    data: event.target.value,
+                  })
+                }
+                value={onboardingCtx.adminLastName}
                 size="small"
                 margin="normal"
                 required
@@ -52,7 +67,6 @@ const GymDetails = () => {
                 label="Last name"
                 name="text"
                 autoComplete="text"
-                autoFocus
               />
             </Box>
             <Box
@@ -63,6 +77,13 @@ const GymDetails = () => {
               justifyContent={"space-around"}
             >
               <TextField
+                onChange={(event) =>
+                  onboardingCtx.updateCompanyData({
+                    type: "companyName",
+                    data: event.target.value,
+                  })
+                }
+                value={onboardingCtx.companyName}
                 size="small"
                 margin="normal"
                 required
@@ -72,6 +93,13 @@ const GymDetails = () => {
                 name="text"
               />
               <TextField
+                onChange={(event) =>
+                  onboardingCtx.updateCompanyData({
+                    type: "companyContactNumber",
+                    data: event.target.value,
+                  })
+                }
+                value={onboardingCtx.companyContactNumber}
                 size="small"
                 margin="normal"
                 required
@@ -82,6 +110,13 @@ const GymDetails = () => {
                 type="tel"
               />
               <TextField
+                onChange={(event) =>
+                  onboardingCtx.updateCompanyData({
+                    type: "companyLocation",
+                    data: event.target.value,
+                  })
+                }
+                value={onboardingCtx.companyLocation}
                 size="small"
                 margin="normal"
                 required
@@ -103,6 +138,9 @@ const GymDetails = () => {
                 </Grid>
                 <Grid item>
                   <Button
+                    disabled={
+                      !onboardingCtx.checkValidInputForCompanyDataStep()
+                    }
                     variant="contained"
                     onClick={signupUserNextStepHandler}
                   >
