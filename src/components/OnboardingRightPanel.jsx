@@ -28,12 +28,12 @@ const OnboardingRightPanel = () => {
           {onboardingCtx.stepperValue !== 2 ? (
             <Box width={"100%"} height={"85vh"}>
               <Stack direction={"row"}>
-                <Box width={"55%"} height={"89vh"}>
+                <Box width={"55%"} height={"88vh"}>
                   {onboardingCtx.stepperValue === 0 && <SignupUser />}
                   {onboardingCtx.stepperValue === 1 && <GymDetails />}
                   {onboardingCtx.stepperValue === 3 && <FinalSetupComponent />}
                 </Box>
-                <Box width={"45%"} height={"89vh"}>
+                <Box width={"45%"} height={"88vh"}>
                   <img
                     src={
                       onboardingCtx.stepperValue === 0 ||
@@ -43,6 +43,7 @@ const OnboardingRightPanel = () => {
                     }
                     alt={"test"}
                     loading="lazy"
+                    // content={"fit"}
                   />
                 </Box>
               </Stack>

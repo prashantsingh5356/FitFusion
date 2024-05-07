@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { Box } from "@mui/system";
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
@@ -10,12 +10,19 @@ import ListItem from "@mui/material/ListItem";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 import OnboardingContext from "../context/OnboardingContext";
+import ModalComponent from "./ModalComponent";
 
 const SubscriptionPlanCard = (props) => {
   const onbaordingCtx = useContext(OnboardingContext);
 
+  const [modalState, setModalState] = useState(false);
+
   const userFinalStepHandler = () => {
-    onbaordingCtx.incrementStepperVal();
+    setModalState((prev) => !prev);
+  };
+
+  const closeModal = () => {
+    setModalState(false);
   };
 
   return (
@@ -62,8 +69,9 @@ const SubscriptionPlanCard = (props) => {
             </List>
           </Box>
           <Button variant="outlined" onClick={userFinalStepHandler}>
-            <Box sx={{ textTransform: "capitalize", m: 1 }}>Choose Plan</Box>
+            <Box sx={{ textTransform: "capitalize", m: 1 }}>View Plan</Box>
           </Button>
+          <ModalComponent showModal={modalState} changeShowModal={closeModal} />
         </Box>
       </Box>
     </Box>
