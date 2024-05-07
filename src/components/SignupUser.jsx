@@ -87,7 +87,6 @@ const SignupUser = () => {
                 </Grid>
               </Box>
             </Box>
-            {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
           </Box>
           <Box width={"80%"} height={"4vh"} mt={2}>
             <Typography variant="body1" gutterBottom>
@@ -103,10 +102,14 @@ const SignupUser = () => {
                   variant="outlined"
                   startIcon={<GoogleIcon fontSize="small" />}
                 >
-                  Sign up With Google
+                  <Box sx={{ textTransform: "capitalize", m: 1 }}>
+                    Sign up With Google
+                  </Box>
                 </Button>
                 <Button variant="outlined" startIcon={<AppleIcon />}>
-                  Sign up with apple
+                  <Box sx={{ textTransform: "capitalize", m: 1 }}>
+                    Sign up with apple
+                  </Box>
                 </Button>
               </Stack>
             </Box>

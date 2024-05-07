@@ -134,7 +134,6 @@ const SubscriptionPlanComponent = () => {
           display={"flex"}
           justifyContent={"space-around"}
           pt={3}
-          border={"1px solid"}
         >
           {DUMMY_DATA.map((plan, i) => {
             return (
