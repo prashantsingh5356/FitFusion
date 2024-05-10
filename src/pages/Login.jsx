@@ -16,8 +16,6 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import AppleIcon from "@mui/icons-material/Apple";
-
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoApple } from "react-icons/io";
 

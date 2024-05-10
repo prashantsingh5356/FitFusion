@@ -1,9 +1,7 @@
 import { useContext } from "react";
 
 import { Box, Typography, TextField, Button, Grid, Stack } from "@mui/material";
-
-import GoogleIcon from "@mui/icons-material/Google";
-import AppleIcon from "@mui/icons-material/Apple";
+import { Link } from "@mui/material";
 
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoApple } from "react-icons/io";
@@ -16,8 +14,6 @@ const SignupUser = () => {
   const signupUserNextStepHandler = () => {
     onboardingCtx.incrementStepperVal();
   };
-
-  // console.log(onboardingCtx.companyEmail);
 
   return (
     <>
@@ -115,17 +111,16 @@ const SignupUser = () => {
               </Box>
             </Box>
           </Box>
-          <Box width={"80%"} height={"4vh"} mt={2}>
-            <Typography variant="body1" gutterBottom>
-              -------------------------------------- Or
-              --------------------------------------
+          <Box width={"80%"} height={"4vh"} mt={2} textAlign={"center"}>
+            <Typography variant="body1" fontWeight={"600"} color={"grey.600"}>
+              Or
             </Typography>
           </Box>
 
-          <Box width={"80%"}>
-            <Box width={"70%"} height={"15vh"} mt={2} mx={"auto"}>
+          <Box width={"80%"} s>
+            <Box width={"70%"} mt={2} mx={"auto"}>
               <Stack spacing={1}>
-                <Box borderRadius={10} border={"1px solid"} overflow={"hidden"}>
+                <Box borderRadius={10} overflow={"hidden"} border={"1px solid"}>
                   <Button fullWidth startIcon={<FcGoogle size={"30px"} />}>
                     <Box
                       sx={{ textTransform: "capitalize", m: 1 }}
@@ -135,7 +130,7 @@ const SignupUser = () => {
                     </Box>
                   </Button>
                 </Box>
-                <Box borderRadius={10} border={"1px solid"} overflow={"hidden"}>
+                <Box borderRadius={10} overflow={"hidden"} border={"1px solid"}>
                   <Button
                     fullWidth
                     startIcon={<IoLogoApple size={"30px"} color="black" />}
@@ -149,6 +144,14 @@ const SignupUser = () => {
                   </Button>
                 </Box>
               </Stack>
+            </Box>
+            <Box width={"inherit"} mt={3} mx={"auto"} textAlign={"center"}>
+              <Typography color={"grey.600"} variant="body2">
+                Already have an account?{" "}
+                <Link href="/" variant="body1">
+                  Sign in here
+                </Link>
+              </Typography>
             </Box>
           </Box>
         </Box>
