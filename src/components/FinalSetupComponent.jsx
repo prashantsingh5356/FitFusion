@@ -30,7 +30,7 @@ const FinalSetupComponent = () => {
   };
   return (
     <>
-      <Box width={"100%"} height={"inherit"}>
+      <Box width={"100%"} height={"80vh"}>
         <Box width={"90%"} height={"80vh"} mx={"auto"} pt={2} mt={4}>
           <Typography variant="h5" fontWeight={"bold"}>
             Invite Your Staff or Members !

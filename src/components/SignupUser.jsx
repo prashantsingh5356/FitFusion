@@ -117,15 +117,12 @@ const SignupUser = () => {
             </Typography>
           </Box>
 
-          <Box width={"80%"} s>
-            <Box width={"70%"} mt={2} mx={"auto"}>
-              <Stack spacing={1}>
+          <Box width={"80%"}>
+            <Box width={"80%"} mt={2} mx={"auto"}>
+              <Stack spacing={1} height={"100px"}>
                 <Box borderRadius={10} overflow={"hidden"} border={"1px solid"}>
                   <Button fullWidth startIcon={<FcGoogle size={"30px"} />}>
-                    <Box
-                      sx={{ textTransform: "capitalize", m: 1 }}
-                      color={"black"}
-                    >
+                    <Box sx={{ textTransform: "capitalize" }} color={"black"}>
                       Sign up With Google
                     </Box>
                   </Button>
@@ -135,10 +132,7 @@ const SignupUser = () => {
                     fullWidth
                     startIcon={<IoLogoApple size={"30px"} color="black" />}
                   >
-                    <Box
-                      sx={{ textTransform: "capitalize", m: 1 }}
-                      color={"black"}
-                    >
+                    <Box sx={{ textTransform: "capitalize" }} color={"black"}>
                       Sign up with apple
                     </Box>
                   </Button>

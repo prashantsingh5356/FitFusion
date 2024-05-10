@@ -43,7 +43,7 @@ const OnboardingRightPanel = () => {
                     }
                     alt={"test"}
                     loading="lazy"
-                    // content={"fit"}
+                    content="cover"
                   />
                 </Box>
               </Stack>
