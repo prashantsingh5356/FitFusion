@@ -105,6 +105,14 @@ const OnboardingProvider = (props) => {
       //check if password and confirm password are same, if not same retun false
       if (!(this.companyPassword === this.confirmCompanyPassword)) return false;
 
+      // is email is valid
+      // if (this.companyEmail)
+      //   return String(this.companyEmail)
+      //     .toLowerCase()
+      //     .match(
+      //       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      //     );
+
       //companyEmail, companyPassword and confirmCompanyPassword is filled and password matches
       return true;
     },

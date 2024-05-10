@@ -5,6 +5,9 @@ import { Box, Typography, TextField, Button, Grid, Stack } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
 
+import { FcGoogle } from "react-icons/fc";
+import { IoLogoApple } from "react-icons/io";
+
 import OnboardingContext from "../context/OnboardingContext";
 
 const SignupUser = () => {
@@ -122,19 +125,29 @@ const SignupUser = () => {
           <Box width={"80%"}>
             <Box width={"70%"} height={"15vh"} mt={2} mx={"auto"}>
               <Stack spacing={1}>
-                <Button
-                  variant="outlined"
-                  startIcon={<GoogleIcon fontSize="small" />}
-                >
-                  <Box sx={{ textTransform: "capitalize", m: 1 }}>
-                    Sign up With Google
-                  </Box>
-                </Button>
-                <Button variant="outlined" startIcon={<AppleIcon />}>
-                  <Box sx={{ textTransform: "capitalize", m: 1 }}>
-                    Sign up with apple
-                  </Box>
-                </Button>
+                <Box borderRadius={10} border={"1px solid"} overflow={"hidden"}>
+                  <Button fullWidth startIcon={<FcGoogle size={"30px"} />}>
+                    <Box
+                      sx={{ textTransform: "capitalize", m: 1 }}
+                      color={"black"}
+                    >
+                      Sign up With Google
+                    </Box>
+                  </Button>
+                </Box>
+                <Box borderRadius={10} border={"1px solid"} overflow={"hidden"}>
+                  <Button
+                    fullWidth
+                    startIcon={<IoLogoApple size={"30px"} color="black" />}
+                  >
+                    <Box
+                      sx={{ textTransform: "capitalize", m: 1 }}
+                      color={"black"}
+                    >
+                      Sign up with apple
+                    </Box>
+                  </Button>
+                </Box>
               </Stack>
             </Box>
           </Box>

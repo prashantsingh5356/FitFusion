@@ -16,8 +16,10 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
+
+import { FcGoogle } from "react-icons/fc";
+import { IoLogoApple } from "react-icons/io";
 
 function Copyright(props) {
   return (
@@ -69,7 +71,7 @@ export default function SignInSide() {
           md={7}
           sx={{
             backgroundImage:
-              "url(https://source.unsplash.com/random?wallpapers)",
+              "url(https://uploads-ssl.webflow.com/6206c63bc60b663e47db1974/63d19c828a40c0a6164eeb2c_bearsprout_a_man_deadlifting.png)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -92,9 +94,12 @@ export default function SignInSide() {
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
+            <Typography component="h1" variant="h5" fontWeight={800}>
+              Welcome Back!
             </Typography>
+            {/* <Typography variant="body2" fontWeight={800} color={"grey.500"}>
+              Sign in to continue
+            </Typography> */}
             <Box
               component="form"
               noValidate
@@ -159,20 +164,29 @@ export default function SignInSide() {
                 flexDirection={"column"}
                 justifyContent={"space-between"}
               >
-                <Button
-                  fullWidth
-                  variant="outlined"
-                  startIcon={<GoogleIcon fontSize="small" />}
-                >
-                  <Box sx={{ textTransform: "capitalize" }}>
-                    Sign in With Google
-                  </Box>
-                </Button>
-                <Button fullWidth variant="outlined" startIcon={<AppleIcon />}>
-                  <Box sx={{ textTransform: "capitalize" }}>
-                    Sign in with apple
-                  </Box>
-                </Button>
+                <Box border={"1px solid"} borderRadius={10} overflow={"hidden"}>
+                  {" "}
+                  <Button
+                    fullWidth
+                    variant="none"
+                    startIcon={<FcGoogle size={"30px"} />}
+                  >
+                    <Box sx={{ textTransform: "capitalize" }} color={"black"}>
+                      Sign in With Google
+                    </Box>
+                  </Button>
+                </Box>
+                <Box border={"1px solid"} borderRadius={10} overflow={"hidden"}>
+                  <Button
+                    fullWidth
+                    variant="none"
+                    startIcon={<IoLogoApple size={"30px"} color="black" />}
+                  >
+                    <Box sx={{ textTransform: "capitalize" }} color={"black"}>
+                      Sign in with apple
+                    </Box>
+                  </Button>
+                </Box>
               </Box>
               <Box width={"inherit"} mt={3} textAlign={"center"}>
                 <Typography color={"grey.600"} variant="body2">
