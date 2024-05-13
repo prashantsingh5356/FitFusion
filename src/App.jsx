@@ -5,17 +5,29 @@ import Onbaording from "./pages/Onboarding";
 import ErrorPage from "./pages/ErrorPage";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 // React lib imports
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import OnboardingProvider from "./context/OnboardingProvider";
 import { Box } from "@mui/material";
 import HomeComponent from "./components/HomeComponent";
+import { redirect } from "react-router-dom";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      children: [
+        {
+          index: true,
+          loader: async () => redirect("/login"),
+          errorElement: <ErrorPage />,
+        },
+      ],
+    },
+    {
+      path: "/login",
       element: <Login />,
       errorElement: <ErrorPage />,
     },
@@ -26,9 +38,16 @@ function App() {
     },
     {
       path: "/dashboard",
-      element: <Dashboard />,
+      element: <ProtectedRoutes />,
       errorElement: <ErrorPage />,
       children: [
+        {
+          index: true,
+          loader: async () => {
+            return redirect("/dashboard/home");
+          },
+          errorElement: <ErrorPage />,
+        },
         {
           path: "home",
           element: <HomeComponent />,
