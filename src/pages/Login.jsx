@@ -1,6 +1,11 @@
 // Library Imports
 import { useNavigate } from "react-router-dom";
 
+import { useState, useEffect } from "react";
+
+//Google auth imports
+import { googleLogout, useGoogleLogin } from "@react-oauth/google";
+
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -37,11 +42,12 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
+  const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState([]);
+
   const navigate = useNavigate();
 
   const signUpUpserHandler = () => {
@@ -57,6 +63,47 @@ export default function SignInSide() {
     });
     navigate("/dashboard/home");
   };
+
+  const googleSignInSuccess = async (res) => {
+    console.log(res);
+    setUser(res);
+  };
+
+  const googleSignInFail = () => {
+    console.log(`login failed : ${error}`);
+  };
+
+  const signInWithGoogle = useGoogleLogin({
+    onSuccess: googleSignInSuccess,
+    onError: googleSignInFail,
+  });
+
+  const logOut = () => {
+    googleLogout();
+    setProfile(null);
+  };
+
+  const getGoogleUserProfile = async (user) => {
+    if (!user) return;
+
+    const response = await fetch(
+      `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
+      {
+        headers: {
+          Authorization: `Bearer ${user.access_token}`,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    const userProf = await response.json();
+    console.log(userProf);
+    setProfile(userProf);
+  };
+
+  useEffect(() => {
+    getGoogleUserProfile(user);
+  }, [user]);
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -95,9 +142,9 @@ export default function SignInSide() {
             <Typography component="h1" variant="h5" fontWeight={800}>
               Welcome Back!
             </Typography>
-            {/* <Typography variant="body2" fontWeight={800} color={"grey.500"}>
-              Sign in to continue
-            </Typography> */}
+            <Typography variant="body2" fontWeight={800} color={"grey.500"}>
+              {profile.email ? profile.email : "Login in to continue"}
+            </Typography>
             <Box
               component="form"
               noValidate
@@ -168,6 +215,7 @@ export default function SignInSide() {
                     fullWidth
                     variant="none"
                     startIcon={<FcGoogle size={"30px"} />}
+                    onClick={signInWithGoogle}
                   >
                     <Box sx={{ textTransform: "capitalize" }} color={"black"}>
                       Sign in With Google
